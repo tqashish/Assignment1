@@ -1,51 +1,70 @@
 <!DOCTYPE html> 
 <html> 
   
-<body style="text-align:center;"> 
-    <h1 style="color:green;">   
-            ToDo   
-        </h1> 
-  <style type="text/css">
-    table,td{
+     <body style="text-align:center;"> 
+
+      <h1 style="color:green;">  ToDo     </h1> 
+            
+       
+
+
+     <style>
+
+
+     table,td{
       border: 2px solid black;
     }
+
+
   </style>
+  
+     <input type="text" id="myText"> 
     
+          
   
-    
-  
-    Name: 
-    <input type="text"
-           id="myText"> 
-  
-    <button type="button" 
-            onclick="myFunction()"> 
-      Submit 
-  </button> 
+    <button onclick="myFunction()">  Submit   </button>
+             
+       
   
     <table id="tableid1">
-      <td><button type="button" onclick="remove()">Delete</button></td>
-    </table>
+
+     <!--  <td><button type="button" onclick="remove()">Delete</button>
+      </td> -->
+     </table>
   
-    <script> 
-        // Here the value is stored in new variable z
+      <script> 
+       
   
-        function myFunction() { 
+  function myFunction() { 
             
               var table=document.getElementById("tableid1");
               var row = table.insertRow(0);
               var cell = row.insertCell(0);
               var z= document.getElementById("myText").value;
               cell.innerHTML = z;
-          alert("data inserted");
+    alert("data inserted");
+
+
+              cell = row.insertCell(1);
+              var remove = document.createElement("INPUT");
+              remove.type = "button";
+              remove.value = "DELETE";
+              remove.setAttribute("onclick","remove(this)");
+              cell.appendChild(remove);
+
         } 
 
-        function remove()
+ function remove(button)
         {
-          document.getElementById("tableid1").deleteRow(0);
+              var row = button.parentNode;
+              var table =  document.getElementById("tableid1");
+
+
+              table.deleteRow(row.rowIndex);
+          // alert("data deleted successfully");
 
         }
     </script> 
-</body> 
+    </body> 
   
-</html> 
+    </html> 
